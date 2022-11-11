@@ -32,7 +32,7 @@ export class App extends Component{
       isLoaded: true,
       page: 1,
         })
-      apiSearch(searchQuery, this.state.page)
+      apiSearch(searchQuery, 1)
         .then(res => {
           if (res.hits.length === 0) {
             this.setState({
@@ -80,8 +80,8 @@ export class App extends Component{
       modalShow: !modalShow,
     }))
   }
-  onLoadBtnClick = () => {
-      this.setState(prev => ({
+  onLoadBtnClick = async () => {
+      await this.setState(prev => ({
         page: prev.page + 1,
         isLoaded: true,
       }))
